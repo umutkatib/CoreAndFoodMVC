@@ -1,0 +1,21 @@
+﻿@model IEnumerable<CoreAndFood.Data.Models.Category>
+
+<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+    @foreach (var item in Model)
+    {
+        <ul class="nav navbar-nav nav_1">
+            <li class="nav-item">
+                <a href="/Home/CategoryDetails/@item.CategoryID" data-bs-toggle="tooltip" title="@item.CategoryDescription">
+                    @item.CategoryName
+                </a>
+            </li>
+        </ul>
+    }
+</div>
+
+<script>
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+</script>

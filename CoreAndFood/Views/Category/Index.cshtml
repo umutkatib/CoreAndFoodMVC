@@ -1,0 +1,37 @@
+﻿@model List<CoreAndFood.Data.Models.Category>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Categories</h2>
+<br />
+
+@using (Html.BeginForm())
+{
+    <p>
+        Category Name: @Html.TextBox("p")
+        <input type="submit" value="Find" />
+    </p>
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Category</th>
+        <th>Delete</th>
+        <th>Update</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.CategoryID</td>
+            <td>@item.CategoryName</td>
+            <td><a href="/Category/CategoryDelete/@item.CategoryID" class="btn btn-danger">Delete</a></td>
+            <td><a href="/Category/CategoryGet/@item.CategoryID" class="btn btn-info">Update</a></td>
+        </tr>
+    }
+</table>
+
+<a href="/Category/CategoryAdd" class="btn btn-success btn-block">Add New Category</a>
